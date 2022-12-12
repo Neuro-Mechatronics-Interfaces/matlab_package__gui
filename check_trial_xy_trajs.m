@@ -99,7 +99,7 @@ for ii = 1:8
     fprintf(1,'\t->\t<strong>%s</strong>\n\t\t->\t', string(enum.TaskTarget(ii-1)));
     trial = io.load_wrist_event_table_trial(Tsub);
     for ik = 1:numel(trial)
-        idx = find(trial{ik}.sync >= 16, 1, 'first');
+        idx = find(trial{ik}.sync(1,:) >= 16, 1, 'first');
         if isempty(idx)
             fprintf(1,'No MOVE ONSET detected for %s: %s-%d\n', tank, string(enum.TaskTarget(ii-1)), ik);
             excluded_blocks(end+1) = Tsub.block(ik); %#ok<AGROW> 
