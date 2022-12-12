@@ -96,7 +96,7 @@ for ii = 1:8
         'XLim', pars.XLim, ...
         'YLim', pars.YLim);
     Tsub = T((T.target_index == enum.TaskTarget(ii-1)) & (T.outcome == enum.TaskOutcome.SUCCESSFUL),:);
-    
+    fprintf(1,'\t->\t<strong>%s</strong>\n\t\t->\t', string(enum.TaskTarget(ii-1)));
     trial = io.load_wrist_event_table_trial(Tsub);
     for ik = 1:numel(trial)
         idx = find(trial{ik}.sync >= 16, 1, 'first');
